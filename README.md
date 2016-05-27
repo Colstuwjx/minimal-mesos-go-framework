@@ -49,13 +49,12 @@ To recall:
 ### Filling Executor information
 
 ```go
-// URIs
-executorUri := "http://s3-eu-west-1.amazonaws.com/enablers/executor"
+//ExecutorInfo
 executorUris := []*mesosproto.CommandInfo_URI{
-   {
-      Value:      &executorUri,
-      Executable: proto.Bool(true),
-   },
+    {
+        Value:      executorUri,
+        Executable: proto.Bool(true),
+    },
 }
 
 //Info
@@ -324,7 +323,7 @@ To finish our Scheduler, we have to fill a `mesosproto.FrameworkInfo` object:
 //Framework
 frameworkInfo := &mesosproto.FrameworkInfo{
 	User: proto.String("root"), // Mesos-go will fill in user.
-	Name: proto.String("Stratio Server Framework (Go)"),
+	Name: proto.String("Web Server Framework (Go)"),
 }
 ```
 

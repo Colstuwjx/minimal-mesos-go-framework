@@ -16,6 +16,7 @@ import (
 
 var (
 	master = flag.String("master", "127.0.0.1:5050", "Master address <ip:port>")
+	executorUri = flag.String("executor", "127.0.0.1:8080/executor", "Url to download the executor from")
 )
 
 func init() {
@@ -24,10 +25,9 @@ func init() {
 
 func main() {
 	//ExecutorInfo
-	executorUri := "http://s3-eu-west-1.amazonaws.com/enablers/executor"
 	executorUris := []*mesosproto.CommandInfo_URI{
 		{
-			Value:      &executorUri,
+			Value:      executorUri,
 			Executable: proto.Bool(true),
 		},
 	}
@@ -52,7 +52,7 @@ func main() {
 	//Framework
 	frameworkInfo := &mesosproto.FrameworkInfo{
 		User: proto.String("root"), // Mesos-go will fill in user.
-		Name: proto.String("Stratio Server Framework (Go)"),
+		Name: proto.String("Web Server Framework (Go)"),
 	}
 
 	//Scheduler Driver
